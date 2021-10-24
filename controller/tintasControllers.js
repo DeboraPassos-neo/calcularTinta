@@ -1,7 +1,14 @@
+const fs = require('fs');
+
+const lerTintas = () => {
+  const data = fs.readFileSync('./tintas.json', 'utf-8');
+  return JSON.parse(data);
+};
+
 const ERROR = 'Esse formato não é possível';
 
 const tintasController = (req, res) => {
-  const paredes = req.body;
+  const paredes = lerTintas();
 
   let areaTotal = 0;
   for (const parede of paredes) {
@@ -33,19 +40,22 @@ const calcularQtdTinta = (areaTotal) => {
   const lata18 = 90;
 
   if (areaTotal <= lata05) { 
-    return 0.5;
+    return console.log(`Para pintar ${areaTotal}m² você precisará de uma lata de tinta de 0,5L`);;
   }
   if (areaTotal <= lata25) {
-   return 2.5;
+   return console.log(`Para pintar ${areaTotal}m² você precisará de uma lata de tinta de 2,5L`);;
   
   }
   if (areaTotal <= lata36) {
-    return 3.6;
+    return console.log(`Para pintar ${areaTotal}m² você precisará de uma lata de tinta de 3,6L`);
     
   }
-  if (areaTotal > lata18) {
-    return 18;
+  if (areaTotal <= lata18) {
+    return console.log(`Para pintar ${areaTotal}m² você precisará de uma lata de tinta de 18L`)
   }
+  if (areaTotal> 90) {
+    console.log(`Para pintar ${areaTotal}m² você precisará de mais de 18L de tinta`);
+  };
 }
 
 module.exports = tintasController;
