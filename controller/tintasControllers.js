@@ -1,14 +1,8 @@
-const fs = require('fs');
-
-const lerTintas = () => {
-  const data = fs.readFileSync('./tintas.json', 'utf-8');
-  return JSON.parse(data);
-};
 
 const ERROR = 'Esse formato não é possível';
 
 const tintasController = (req, res) => {
-  const paredes = lerTintas();
+  const paredes = req.body;
 
   let areaTotal = 0;
   for (const parede of paredes) {

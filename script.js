@@ -50,16 +50,23 @@ const paredes = [
   }
 ]
 
+getResponse(paredes);
+
 });
 
-const getResponse = async () => {
+const getResponse = async (paredes) => {
   try {
-    const response = await fetch ('http://localhost:8000/');
-    const data = await response.json();
-    console.log(data)
+    const response = await axios.post('http://localhost:8000/', paredes);
+    const data = await response.data;
+    show(data);
   } catch (error) {
-    console.error("Erro!")
+    console.error(error)
   }
 };
-getResponse();
 
+const show = (latas) => {
+let output = '';
+  output = `<li>Você irá precisar de uma lata de ${latas} litros de tinta para pintar todas as paredes.</li>`
+
+  document.querySelector('.resposta').innerHTML = output
+};
