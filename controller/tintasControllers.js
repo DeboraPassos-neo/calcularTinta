@@ -39,23 +39,15 @@ const calcularQtdTinta = (areaTotal) => {
   const lata36 = 18;
   const lata18 = 90;
 
-  if (areaTotal <= lata05) { 
-    return console.log(`Para pintar ${areaTotal}m² você precisará de uma lata de tinta de 0,5L`);;
-  }
-  if (areaTotal <= lata25) {
-   return console.log(`Para pintar ${areaTotal}m² você precisará de uma lata de tinta de 2,5L`);;
-  
-  }
-  if (areaTotal <= lata36) {
-    return console.log(`Para pintar ${areaTotal}m² você precisará de uma lata de tinta de 3,6L`);
+  if (areaTotal <= lata05) return 0.5;
+
+  if (areaTotal <= lata25) return 2.5;
+
+  if (areaTotal <= lata36) return 3.6;
     
-  }
-  if (areaTotal <= lata18) {
-    return console.log(`Para pintar ${areaTotal}m² você precisará de uma lata de tinta de 18L`)
-  }
-  if (areaTotal> 90) {
-    console.log(`Para pintar ${areaTotal}m² você precisará de mais de 18L de tinta`);
-  };
+  if (areaTotal <= lata18) return 18;
+
+  if (areaTotal > 90) return 'mais que 18';
 }
 
 module.exports = tintasController;

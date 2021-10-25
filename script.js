@@ -19,7 +19,7 @@ const janela4 = document.querySelector('#input-janela4');
 const porta4 = document.querySelector('#input-porta4');
 
 const buttonSubmit = document.getElementById('btn');
-buttonSubmit.addEventListener('click', (event) => {
+buttonSubmit.addEventListener('click', async (event) => {
 
 event.preventDefault() 
 
@@ -50,5 +50,16 @@ const paredes = [
   }
 ]
 
-  console.log(paredes);
 });
+
+const getResponse = async () => {
+  try {
+    const response = await fetch ('http://localhost:8000/');
+    const data = await response.json();
+    console.log(data)
+  } catch (error) {
+    console.error("Erro!")
+  }
+};
+getResponse();
+
